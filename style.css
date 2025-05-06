@@ -1,0 +1,265 @@
+:root {
+    --bg: #fafafa;
+    --fg: #333;
+    --accent: #d34a3a;
+    --accent-dark: #b0382e;
+    --wall: #9a9a9a;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 1.1em;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #fafafa;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+h1 {
+    margin: 1em .5em;
+    text-align: center;
+}
+
+#controls {
+    margin: 0 1em;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 1em 1.5em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+#controls label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9em;
+    color: #555;
+}
+
+#controls input {
+    margin-top: 0.3em;
+    padding: 0.3em 0.5em;
+    width: 4em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#controls button {
+    align-self: flex-end;
+    padding: 0.6em 1.2em;
+    background: var(--accent);
+    color: #fff;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background .2s;
+}
+
+#controls button:not(:disabled) .dot-loader {
+    display: none;
+}
+
+#controls button:not(:disabled):hover {
+    background: var(--accent-dark);
+}
+
+#controls button:disabled .button-text {
+    visibility: hidden;
+}
+
+.dot-loader {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: dot-flash 0.5s infinite linear alternate;
+}
+
+.dot-loader::before,
+.dot-loader::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: inherit;
+    animation: inherit;
+}
+
+.dot-loader::before {
+    left: -14px;
+    animation-delay: 0s;
+}
+
+.dot-loader::after {
+    left: 14px;
+    animation-delay: 0.5s;
+}
+
+@keyframes dot-flash {
+
+    0%,
+    50% {
+        background: rgba(255, 255, 255, 0.6);
+    }
+
+    100% {
+        background: #fff;
+    }
+}
+
+#metrics {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.6em 1em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    font-size: 0.85em;
+    width: 280px;
+    max-height: min(calc(100vh - 4.5em), 600px);
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 1000;
+}
+
+#metrics:not(:empty) {
+    opacity: 1;
+}
+
+#metrics h2 {
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.3em;
+    font-size: 1em;
+}
+
+#metrics ul {
+    list-style: none;
+    padding: 0;
+}
+
+#metrics li {
+    margin: 0.3em 0;
+}
+
+#metrics li strong {
+    color: #555;
+}
+
+#reset-zoom {
+    position: fixed;
+    bottom: 1em;
+    left: 1em;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.6em 1em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    font-size: 0.85em;
+    cursor: pointer;
+    z-index: 1001;
+    transition: opacity 0.3s;
+    color: #555;
+}
+
+#reset-zoom:disabled {
+    cursor: default;
+    opacity: 0;
+}
+
+.wall {
+    stroke: var(--wall);
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.route {
+    stroke: var(--accent);
+    stroke-opacity: 0.7;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 9999;
+    stroke-dashoffset: 9999;
+}
+
+.survivor {
+    fill:var(--fg);
+}
+
+.exit {
+    fill:var(--accent-dark);
+}
+
+#svg-container {
+    width: 100vw;
+    height: 100vw;
+    max-width: 100vw;
+    max-height: 80vh;
+    min-height: 320px;
+    min-width: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+#svg-container svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    touch-action: none;
+    background: transparent;
+    border-radius: 0.7em;
+    box-shadow: 0 1px 14px rgba(0,0,0,0.05);
+    touch-action: none;
+}
+
+#svg-container::before,
+#svg-container::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 8%;
+    pointer-events: none;
+}
+
+#svg-container::before {
+    top: 0;
+    background: linear-gradient(to bottom, var(--bg), transparent);
+}
+
+#svg-container::after {
+    bottom: 0;
+    background: linear-gradient(to top, var(--bg), transparent);
+}
