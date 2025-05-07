@@ -6,11 +6,12 @@
     --wall: #9a9a9a;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-size: 1.1em;
+    font-size: 1.05em;
 }
 
 body {
@@ -210,11 +211,11 @@ h1 {
 }
 
 .survivor {
-    fill:var(--fg);
+    fill: var(--fg);
 }
 
 .exit {
-    fill:var(--accent-dark);
+    fill: var(--accent-dark);
 }
 
 #svg-container {
@@ -240,7 +241,7 @@ h1 {
     touch-action: none;
     background: transparent;
     border-radius: 0.7em;
-    box-shadow: 0 1px 14px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 14px rgba(0, 0, 0, 0.05);
     touch-action: none;
 }
 
