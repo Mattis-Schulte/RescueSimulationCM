@@ -416,7 +416,7 @@ document.getElementById("generate") \
 
 ---
 
-## Performance & Scaling
+## Performance & Scaling (approximately)
 
 - Maze carving: O(R * S)
 - Single BFS: O(R * S)
@@ -425,4 +425,10 @@ document.getElementById("generate") \
 - 2-Opt refinement: O(max_loops * (n_entr + n_surv)^2)
 - SVG rendering: O(R * S) primitives
 
-Each component scales predictably, supporting interactive parameter tuning even for moderately large mazes.
+## References
+- Maze generation algorithms, including randomized DFS: [Wikipedia, "Maze generation algorithm"](https://en.wikipedia.org/wiki/Maze_generation_algorithm#Iterative_implementation_(with_stack))
+- Breadth-First Search (BFS) for shortest paths: [Wikipedia, "Breadth-first search"](https://en.wikipedia.org/wiki/Breadth-first_search#Pseudocode)
+- Nearest-neighbor heuristics and 2-Opt for TSP: [Wikipedia, "Traveling salesman problem"](https://en.wikipedia.org/wiki/Travelling_salesman_problem#Constructive_heuristics); [Wikipedia, "2-opt"](https://en.wikipedia.org/wiki/2-opt#Pseudocode)
+- AgentPy for agent-based modeling: [AgentPy Documentation](https://agentpy.readthedocs.io/en/latest/)
+- PyScript for Python in the browser: [PyScript Documentation](https://docs.pyscript.net/)
+- SVG rendering in HTML: [MDN Web Docs, "Scalable Vector Graphics (SVG)"](https://developer.mozilla.org/en-US/docs/Web/SVG)
