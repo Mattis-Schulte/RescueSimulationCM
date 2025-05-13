@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Rescue Simulation (Circular Maze)</title>
+
+    <!-- Core styles -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- PyScript -->
+    <link rel="stylesheet" href="https://pyscript.net/snapshots/2024.9.2/core.css" />
+    <script type="module" src="https://pyscript.net/snapshots/2024.9.2/core.js" defer></script>
+
+    <!-- Application script -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <h1>Rescue Simulation (Circular Maze)</h1>
+
+    <section id="controls">
+        <label>
+            Rings (layers):
+            <input id="rings" type="number" min="2" value="16" />
+        </label>
+        <label>
+            Sectors:
+            <input id="sectors" type="number" min="3" value="22" />
+        </label>
+        <label>
+            Survivors:
+            <input id="nsurv" type="number" min="1" value="5" />
+        </label>
+        <label>
+            Entrances:
+            <input id="nentr" type="number" min="1" value="2" />
+        </label>
+        <button id="generate" disabled>
+            <span class="button-text">Generate &amp; Simulate</span>
+            <span class="dot-loader"></span>
+        </button>
+    </section>
+
+    <button id="reset-zoom" disabled>Reset Zoom</button>
+    <div id="metrics"></div>
+    <div id="svg-container"></div>
+
+    <!-- PyScript entrypoint -->
+    <script type="py" src="main.py" config='{"packages":["agentpy"]}'></script>
+</body>
+
+</html>
